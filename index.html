@@ -246,17 +246,12 @@
     .why { background: var(--navy); border-top: 3px solid var(--gold); }
     .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto; }
     .why-visual {
-      background: var(--navy3); border: 1px solid var(--border);
-      padding: 3rem; text-align: center; position: relative; overflow: hidden;
+      border: 1px solid var(--border);
+      overflow: hidden; border-radius: 0;
     }
-    .why-visual-text {
-      font-family: var(--font-h); font-size: 3.5rem; font-weight: 800;
-      line-height: 0.95; color: var(--gold); opacity: 0.15;
-    }
-    .why-badge {
-      margin-top: 1.5rem; font-size: 0.6rem; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--muted);
-      border-top: 1px solid var(--border); padding-top: 1rem;
+    .why-visual img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
     }
     .perks { margin-top: 2rem; display: flex; flex-direction: column; gap: 1.5rem; }
     .perk { display: flex; gap: 1rem; align-items: flex-start; }
@@ -632,8 +627,7 @@
   <section class="section why" id="about">
     <div class="why-grid">
       <div class="why-visual">
-        <div class="why-visual-text">THE<br>GOLDEN<br>BRIEF</div>
-        <div class="why-badge">Est. 2024 — Built for Business Owners</div>
+        <img src="why-banner.jpg" alt="Golden & Co. — Web Design, Automation, Templates"/>
       </div>
       <div>
         <div class="section-tag">Why Work With Us</div>
