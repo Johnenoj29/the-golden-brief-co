@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Golden & Co. — Web Design, Automations & Templates for Australian Small Business</title>
   <meta name="description" content="Golden & Co. builds websites, automations and digital templates for Australian small businesses — tradies, cafes, allied health & more. Save time, look professional, get more customers."/>
-  <link rel="icon" type="image/png" href="logo.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
   <link rel="canonical" href="https://goldenandco.com.au/"/>
   <meta name="theme-color" content="#0a1424"/>
   <!-- Open Graph -->
@@ -14,12 +15,12 @@
   <meta property="og:title" content="Golden & Co. — Web Design, Automations & Templates for Australian Small Business"/>
   <meta property="og:description" content="Websites and smart automations for Australian small businesses. Save time on admin, look professional, get more customers."/>
   <meta property="og:url" content="https://goldenandco.com.au/"/>
-  <meta property="og:image" content="https://goldenandco.com.au/why-banner.jpg"/>
+  <meta property="og:image" content="https://goldenandco.com.au/og-image.jpg"/>
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Golden & Co. — Web Design & Automations for Australian Small Business"/>
   <meta name="twitter:description" content="Websites and smart automations for Australian small businesses. Look professional, get more customers."/>
-  <meta name="twitter:image" content="https://goldenandco.com.au/why-banner.jpg"/>
+  <meta name="twitter:image" content="https://goldenandco.com.au/og-image.jpg"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
@@ -1025,6 +1026,21 @@
     </div>
   </section>
 
+  <!-- LEAD MAGNET: FREE AUDIT -->
+  <section class="section" id="audit" style="background:radial-gradient(800px 400px at 50% 0%, rgba(201,168,76,0.12), transparent 60%), var(--bg);border-top:1px solid var(--line);">
+    <div class="wrap reveal" style="max-width:860px;text-align:center;margin:0 auto;">
+      <span class="eyebrow" style="justify-content:center;">Free · No Obligation</span>
+      <h2 class="section-title" style="margin:1rem auto 0;">Get a Free <em>Website Audit</em></h2>
+      <p class="section-desc" style="margin:1rem auto 0;max-width:560px;">Not sure where your current site is letting you down? We'll review it and send you 5 quick, plain-English wins to get more customers — free, no strings attached.</p>
+      <div style="display:flex;gap:1.8rem;justify-content:center;flex-wrap:wrap;margin:1.8rem 0 2.2rem;font-size:0.78rem;color:var(--gold2);letter-spacing:0.03em;">
+        <span>✓ Speed &amp; mobile check</span>
+        <span>✓ Google visibility</span>
+        <span>✓ Conversion quick-wins</span>
+      </div>
+      <a href="#contact" class="btn btn-gold" id="audit-cta" style="margin:0 auto;">Claim My Free Audit <svg class="ic"><use href="#ic-arrow"/></svg></a>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section class="section" id="faq" style="background:linear-gradient(180deg, rgba(10,20,36,0.9), rgba(6,11,22,0.95)), url('ambient-gold.jpg') center/cover no-repeat;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
     <div class="wrap">
@@ -1130,6 +1146,7 @@
             <label for="service">What Do You Need Help With?</label>
             <select id="service" name="service">
               <option value="">Pick the closest one...</option>
+              <option>I'd like a free website audit</option>
               <option>I need a new website</option>
               <option>I want to save time on admin</option>
               <option>I want automatic invoicing</option>
@@ -1208,7 +1225,7 @@
         "telephone": "+61401289072",
         "areaServed": "AU",
         "priceRange": "$$",
-        "image": "https://goldenandco.com.au/why-banner.jpg",
+        "image": "https://goldenandco.com.au/og-image.jpg",
         "address": { "@type": "PostalAddress", "addressCountry": "AU" }
       },
       {
@@ -1467,6 +1484,15 @@
       });
     }
 
+    // Free-audit CTA pre-selects the audit option in the contact form
+    const auditCta = document.getElementById('audit-cta');
+    if (auditCta) {
+      auditCta.addEventListener('click', () => {
+        const sel = document.getElementById('service');
+        if (sel) sel.value = "I'd like a free website audit";
+      });
+    }
+
     // Sticky mobile quote bar
     const mcta = document.getElementById('mobile-cta');
     if (mcta) {
@@ -1476,6 +1502,11 @@
       }, { passive: true });
     }
   </script>
+
+  <!-- Vercel Web Analytics + Speed Insights (enable both in the Vercel project dashboard) -->
+  <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
 
 </body>
 </html>
