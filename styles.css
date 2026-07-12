@@ -573,3 +573,157 @@
 .stats-band .stat-num .stat-suffix { color: var(--gold); }
 .stats-band .stat-label { font-size: 0.62rem; color: var(--muted); letter-spacing: 0.16em; text-transform: uppercase; margin-top: 0.5rem; }
 @media (max-width: 760px) { .svc-detail-grid { grid-template-columns: 1fr; } }
+
+/* ═══════════════════════════════════════════
+   MOBILE REDESIGN — clean, no overflow (<=680px)
+   ═══════════════════════════════════════════ */
+@media (max-width: 680px) {
+  /* Kill any horizontal overflow from long words / flex children */
+  html, body { overflow-x: hidden; }
+  h1, h2, h3, p, .section-title, .hero h1 { overflow-wrap: break-word; word-break: normal; hyphens: none; }
+  .hero-inner, .hero-copy, .wrap, .section, .split-head > div { min-width: 0; max-width: 100%; }
+  img { max-width: 100%; }
+
+  /* ── HEADER ── */
+  header.site { padding: 0.85rem 1.1rem; }
+  header.site.scrolled { padding: 0.7rem 1.1rem; }
+  .brand span { font-size: 0.95rem; }
+  .brand img { height: 28px; }
+
+  /* ── HERO ── */
+  .hero { min-height: auto; padding: 6.5rem 1.3rem 3.5rem; }
+  .hero-lion { opacity: 0.08 !important; }
+  .eyebrow { font-size: 0.58rem; letter-spacing: 0.24em; }
+  .eyebrow::before { width: 24px; }
+  .hero h1 { font-size: clamp(2rem, 9vw, 2.7rem); line-height: 1.1; margin-top: 1.1rem; }
+  .hero-sub { font-size: 0.95rem; line-height: 1.75; margin-top: 1.1rem; max-width: 100%; }
+  .hero-pills { gap: 0.4rem; margin-top: 1.2rem; }
+  .pill { font-size: 0.56rem; padding: 0.4rem 0.75rem; }
+  .hero-actions { flex-direction: column; align-items: stretch; gap: 0.7rem; margin-top: 1.6rem; }
+  .hero-actions .btn { width: 100%; justify-content: center; }
+  .hero-stats { gap: 0.5rem; justify-content: space-between; margin-top: 2rem; padding-top: 1.5rem; }
+  .hero-stats > div { flex: 1 1 0; text-align: center; }
+  .stat-num { font-size: 1.75rem; }
+  .stat-label { font-size: 0.48rem; letter-spacing: 0.06em; margin-top: 0.35rem; }
+  .scroll-cue { display: none; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 3.4rem 1.3rem; }
+  .section-title { font-size: clamp(1.65rem, 7.5vw, 2.1rem) !important; line-height: 1.15; }
+  .section-desc { font-size: 0.85rem; }
+  .split-head { flex-direction: column; align-items: flex-start; gap: 0.9rem; margin-bottom: 2.4rem !important; }
+  .section-head { margin-bottom: 2.4rem; }
+
+  /* ── CARDS / GRIDS ── */
+  .highlight-grid, .problems-grid, .services-list, .steps, .svc-detail-grid { grid-template-columns: 1fr !important; gap: 1rem; }
+  .glow-card, .hl-card { padding: 2rem 1.5rem; }
+  .svc-detail { padding: 2rem 1.5rem; }
+  .hl-icon { width: 52px; height: 52px; margin-bottom: 1rem; }
+  .hl-card h3, .svc-detail h3 { font-size: 1.2rem; }
+  .prob-card { padding: 1.5rem; }
+  .service-item { grid-template-columns: 1fr; padding: 1.6rem; }
+  .service-icon { display: none; }
+  .step { padding: 1rem 0.5rem; }
+  .steps::before { display: none; }
+
+  /* ── PROCESS / WHY ── */
+  .why-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .why-visual { display: none; }
+
+  /* ── PAGE HERO (subpages) ── */
+  .page-hero { padding: 6rem 1.3rem 2.8rem; }
+  .page-hero h1 { font-size: clamp(1.9rem, 8.5vw, 2.5rem); }
+  .page-hero p { font-size: 0.92rem; }
+
+  /* ── SHOWCASE / DEVICE ── */
+  .showcase { padding: 3.4rem 1.3rem; }
+  .showcase-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .device-caption { font-size: 0.6rem; }
+
+  /* ── PORTFOLIO ── */
+  .work-filters { gap: 0.4rem; margin-top: 2rem; }
+  .wf { font-size: 0.6rem; padding: 0.5rem 0.85rem; }
+  .work-gallery { grid-template-columns: 1fr !important; max-width: 100%; gap: 1rem; }
+  .work-card img { height: 190px; }
+  .work-card .wc-label { font-size: 0.92rem; padding: 1rem 1.1rem; }
+
+  /* ── STATS BAND (about) ── */
+  .stats-band { gap: 1.6rem 1rem; }
+  .stats-band > div { flex: 0 0 42%; }
+  .stats-band .stat-num { font-size: 2.2rem; }
+
+  /* ── STORY (about) ── */
+  .story p { font-size: 0.95rem; line-height: 1.85; }
+
+  /* ── CTA ── */
+  .cta { padding: 3.8rem 1.3rem; }
+  .cta h2 { font-size: clamp(1.8rem, 8vw, 2.3rem); }
+  .cta p { font-size: 0.9rem; }
+  .cta-lion { width: 75vw; opacity: 0.3; right: -8%; }
+
+  /* ── AUDIT band ── */
+  #audit .btn { width: 100%; justify-content: center; }
+
+  /* ── CONTACT ── */
+  .contact-wrap { grid-template-columns: 1fr; gap: 1.6rem; }
+  .contact-form { padding: 1.5rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .contact-item { padding: 1rem; }
+
+  /* ── FAQ ── */
+  .faq-q { font-size: 0.88rem; padding: 1.1rem 1.2rem; }
+  .faq-a p { padding: 0 1.2rem 1.2rem; font-size: 0.83rem; }
+
+  /* ── FOOTER ── */
+  footer { flex-direction: column; text-align: center; gap: 1.1rem; padding: 2.2rem 1.3rem; }
+  .footer-links { justify-content: center; flex-wrap: wrap; gap: 1.2rem; }
+
+  /* ── LIGHTBOX ── */
+  .lightbox { padding: 1rem; }
+  .lb-img { max-height: 46vh; }
+  .lb-body { padding: 1.2rem 1.3rem 1.5rem; }
+  .lb-title { font-size: 1.2rem; }
+
+  /* ── FLOATING ── */
+  .wa-fab { left: 1rem; bottom: 5.4rem; }
+  .to-top { right: 1rem; bottom: 5.4rem; }
+}
+
+/* Extra-small phones */
+@media (max-width: 380px) {
+  .hero h1 { font-size: 1.85rem; }
+  .stat-num { font-size: 1.55rem; }
+  .wf { font-size: 0.56rem; padding: 0.45rem 0.7rem; }
+  .nav-cta { display: none; }
+}
+
+/* Mobile overflow hard-fix: hero grid -> block, stats wrap */
+@media (max-width: 680px) {
+  .hero-inner { display: block !important; }
+  .hero-copy { width: 100%; max-width: 100%; }
+  .hero-stats { flex-wrap: wrap; row-gap: 1.1rem; }
+  .hero-stats > div { flex: 1 0 27%; }
+  body { overflow-x: clip; }
+}
+
+/* Mobile: fixed heading sizes (no vw) so long words never force page-width overflow */
+@media (max-width: 680px) {
+  .hero h1 { font-size: 2rem !important; line-height: 1.12; }
+  .section-title { font-size: 1.72rem !important; }
+  .page-hero h1 { font-size: 2rem !important; }
+  .cta h2 { font-size: 1.85rem !important; }
+  .stat-num { font-size: 1.7rem !important; }
+  .hero h1, .section-title, .page-hero h1, .cta h2 { overflow-wrap: break-word; }
+}
+@media (max-width: 400px) {
+  .hero h1, .page-hero h1 { font-size: 1.8rem !important; }
+  .section-title { font-size: 1.55rem !important; }
+}
+
+/* CRITICAL mobile overflow fix: clip fixed off-canvas nav at root so it can't widen the page */
+html { overflow-x: clip; }
+@media (max-width: 760px) {
+  .nav { max-width: 100vw; }
+  .nav:not(.open) { visibility: hidden; }
+  .nav.open { visibility: visible; }
+}
