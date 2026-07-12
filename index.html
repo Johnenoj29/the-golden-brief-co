@@ -669,16 +669,26 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "ProfessionalService",
+        "@type": ["ProfessionalService", "Organization"],
         "name": "Golden & Co.",
+        "alternateName": ["Golden and Co", "Golden and Co.", "The Golden Digital Co"],
         "description": "Web design, automations and digital templates for Australian small businesses.",
+        "slogan": "Your business. Easier. Faster. More profitable.",
         "url": "https://goldenandco.com.au/",
+        "logo": "https://goldenandco.com.au/apple-touch-icon.png",
+        "image": "https://goldenandco.com.au/og-image.jpg",
         "email": "thegoldendigitalco@gmail.com",
         "telephone": "+61401289072",
-        "areaServed": "AU",
+        "areaServed": { "@type": "Country", "name": "Australia" },
         "priceRange": "$$",
-        "image": "https://goldenandco.com.au/og-image.jpg",
+        "knowsAbout": ["Web design", "Website development", "Business automation", "Online booking systems", "Automated invoicing", "Landing pages", "Small business marketing"],
         "address": { "@type": "PostalAddress", "addressCountry": "AU" }
+      },
+      {
+        "@type": "WebSite",
+        "name": "Golden & Co.",
+        "alternateName": "Golden and Co",
+        "url": "https://goldenandco.com.au/"
       },
       {
         "@type": "FAQPage",
