@@ -727,3 +727,19 @@ html { overflow-x: clip; }
   .nav:not(.open) { visibility: hidden; }
   .nav.open { visibility: visible; }
 }
+
+/* Mobile header: keep it solid on scroll so it never blends into the page */
+@media (max-width: 760px) {
+  header.site.scrolled {
+    background: rgba(8,13,24,0.98) !important;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 26px rgba(0,0,0,0.5);
+    border-bottom: 1px solid var(--line2) !important;
+  }
+  /* subtle top scrim so logo/menu stay legible over the hero before scrolling */
+  header.site:not(.scrolled)::after {
+    content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+    background: linear-gradient(180deg, rgba(6,11,22,0.55), transparent);
+  }
+}
