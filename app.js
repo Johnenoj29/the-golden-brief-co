@@ -204,3 +204,47 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
         if (!running) { running = true; requestAnimationFrame(frame); }
       });
     })();
+
+    // ── ALIVE: gold dust + scroll parallax ──
+    (function () {
+      if (reduceMotion) return;
+
+      // Gold dust — sparse and slow, so it reads as atmosphere not confetti
+      const dust = document.getElementById('dust');
+      if (dust) {
+        const count = window.innerWidth < 760 ? 10 : 18;
+        for (let i = 0; i < count; i++) {
+          const m = document.createElement('span');
+          m.className = 'mote';
+          const size = 1.5 + Math.random() * 2.5;
+          m.style.left = (Math.random() * 100) + '%';
+          m.style.width = m.style.height = size.toFixed(1) + 'px';
+          m.style.setProperty('--dx', (Math.random() * 90 - 45).toFixed(0) + 'px');
+          m.style.animationDuration = (16 + Math.random() * 18).toFixed(1) + 's';
+          m.style.animationDelay = (-Math.random() * 30).toFixed(1) + 's';
+          m.style.opacity = (0.35 + Math.random() * 0.45).toFixed(2);
+          dust.appendChild(m);
+        }
+      }
+
+      // Scroll parallax: elements drift at their own rate
+      const layers = [
+        { el: document.querySelector('.hero-lion'), rate: 0.16 },
+        { el: document.querySelector('.hero-copy'), rate: -0.05 },
+        { el: document.querySelector('.dust'), rate: 0.28 },
+      ].filter(l => l.el);
+      if (!layers.length) return;
+
+      let ticking = false;
+      const apply = () => {
+        const y = window.scrollY;
+        if (y < window.innerHeight * 1.4) {
+          for (const l of layers) l.el.style.setProperty('--py', (y * l.rate).toFixed(1) + 'px');
+        }
+        ticking = false;
+      };
+      window.addEventListener('scroll', () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(apply); }
+      }, { passive: true });
+      apply();
+    })();
