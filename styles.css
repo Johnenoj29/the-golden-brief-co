@@ -163,10 +163,10 @@ header.site.scrolled .brand img { height: 28px; }
 }
 .hero-inner {
   position: relative; z-index: 2; width: 100%; max-width: 1180px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 0.95fr; gap: clamp(2rem, 6vw, 5rem); align-items: center;
+  display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center;
   transform-style: flat;
 }
-.hero-copy { max-width: 34rem; transform: none !important; animation: none !important; }
+.hero-copy { max-width: 36rem; transform: none !important; animation: none !important; }
 .hero-copy > * { transform: none !important; }
 .hero h1 { font-size: clamp(2.4rem, 4.2vw, 3.9rem); margin-top: 1.8rem; letter-spacing: -0.015em; line-height: 1.1; text-transform: none; }
 .hero h1 em { font-style: italic; color: var(--gold); background: none; -webkit-text-fill-color: currentColor; animation: none; filter: none; text-shadow: none; }
@@ -174,7 +174,7 @@ header.site.scrolled .brand img { height: 28px; }
 .hero-sub { color: var(--text-2); font-size: 1rem; line-height: 1.85; margin-top: 1.6rem; max-width: 42ch; }
 .hero-actions { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; margin-top: 2.4rem; }
 
-.hero-stats { display: flex; gap: clamp(2rem, 5vw, 4rem); flex-wrap: wrap; margin-top: 2.6rem; padding-top: 1.8rem; border-top: 1px solid var(--line); }
+.hero-stats { display: flex; gap: clamp(1.2rem, 3vw, 2.8rem); flex-wrap: nowrap; margin-top: 2.6rem; padding-top: 1.8rem; border-top: 1px solid var(--line); }
 .stat-num { font-family: var(--font-d); font-weight: 600; font-size: 2.1rem; line-height: 1; color: var(--text); }
 .stat-num .stat-suffix { color: var(--gold); }
 .stat-label { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); margin-top: 0.8rem; }
@@ -698,3 +698,30 @@ body.menu-open { overflow: hidden; }
 }
 @keyframes screenSheen { 0% { background-position: 160% 0; } 55%,100% { background-position: -80% 0; } }
 @media (prefers-reduced-motion: reduce) { .device::before { animation: none; } }
+
+/* ═══ LION AS VIDEO — screen-blended so the dark plate vanishes ═══ */
+.hero-lion { width: min(48vw, 620px); }          /* bigger than the original 540 */
+.hero-lion .lion-vid {
+  grid-area: 1/1; width: 100%; height: auto; display: block;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 42%, rgba(0,0,0,0.85) 56%, transparent 73%);
+          mask-image: radial-gradient(circle at 50% 50%, #000 42%, rgba(0,0,0,0.85) 56%, transparent 73%);
+  animation: lionDrift 7s ease-in-out 1.8s infinite;
+  will-change: transform;
+}
+/* still image sits underneath as the fallback / first paint */
+.hero-lion .lion-still {
+  grid-area: 1/1; width: 100%; height: auto;
+  animation: lionDrift 7s ease-in-out 1.8s infinite;
+  opacity: 0; transition: opacity .6s var(--ease);
+}
+/* if the video can't play, JS reveals the still and hides the video */
+.hero-lion.video-failed .lion-vid { display: none; }
+.hero-lion.video-failed .lion-still { opacity: 1; }
+/* the shine sweep is now baked into the video */
+.hero-lion::after { display: none !important; }
+
+@media (max-width: 1024px) { .hero-lion { width: min(66vw, 400px); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-lion .lion-vid { display: none; }
+  .hero-lion .lion-still { opacity: 1; animation: none; }
+}

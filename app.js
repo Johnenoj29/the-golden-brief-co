@@ -262,3 +262,15 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
       }, { passive: true });
       apply();
     })();
+
+    // Lion video: fall back to the crisp still if it can't load/play
+    (function () {
+      const wrap = document.getElementById('hero-lion');
+      const vid = wrap && wrap.querySelector('.lion-vid');
+      if (!wrap || !vid) return;
+      const fail = () => wrap.classList.add('video-failed');
+      vid.addEventListener('error', fail);
+      vid.querySelector('source')?.addEventListener('error', fail);
+      // if it never starts within 3.5s, show the still instead
+      setTimeout(() => { if (vid.readyState < 2) fail(); }, 3500);
+    })();
