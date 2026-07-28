@@ -25,7 +25,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
   <link rel="preload" as="image" href="lion-mark.webp"/>
-  <link rel="stylesheet" href="styles.css?v=1785238786"/>
+  <link rel="stylesheet" href="styles.css?v=1785239754"/>
 </head>
 <body id="top">
 
@@ -154,9 +154,14 @@
       </div>
       <div class="device-stage reveal from-right">
         <div class="device-float">
-          <div class="device" id="device"><img src="work-interior.jpg" alt="Maison Noir — a premium interior design site by Golden & Co." loading="lazy" decoding="async"/></div>
+          <div class="device" id="device">
+            <video class="reel" autoplay muted loop playsinline preload="metadata" poster="work-reel-poster.jpg" aria-label="A reel of websites and apps built by Golden &amp; Co.">
+              <source src="work-reel.mp4" type="video/mp4"/>
+              <img src="work-interior.jpg" alt="A website built by Golden &amp; Co."/>
+            </video>
+          </div>
         </div>
-        <div class="device-caption">Maison Noir — a premium studio site from our portfolio</div>
+        <div class="device-caption">Real projects we designed &amp; built</div>
       </div>
     </div>
     <div class="work-filters" id="work-filters">
@@ -671,7 +676,7 @@
   }
   </script>
 
-  <script defer src="app.js?v=1785238786"></script>
+  <script defer src="app.js?v=1785239754"></script>
 
   <!-- Vercel Web Analytics + Speed Insights (enable both in the Vercel project dashboard) -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>

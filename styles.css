@@ -685,3 +685,16 @@ footer { display: flex; justify-content: space-between; align-items: center; fle
 
 /* Lock the page while the drawer is open, at any width */
 body.menu-open { overflow: hidden; }
+
+/* ── Work reel: real projects, moving ── */
+.device .reel { display: block; width: 100%; height: auto; object-fit: cover; background: var(--ink-2); }
+.device { position: relative; }
+/* a soft gold sheen passes over the screen, like light on glass */
+.device::before {
+  content: ''; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(115deg, transparent 42%, rgba(236,217,162,0.10) 50%, transparent 58%);
+  background-size: 300% 100%;
+  animation: screenSheen 9s ease-in-out infinite;
+}
+@keyframes screenSheen { 0% { background-position: 160% 0; } 55%,100% { background-position: -80% 0; } }
+@media (prefers-reduced-motion: reduce) { .device::before { animation: none; } }
