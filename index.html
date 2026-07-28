@@ -23,15 +23,13 @@
   <meta name="twitter:image" content="https://goldenandco.com.au/og-image.jpg"/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
-  <link rel="preload" as="image" href="hero-bg.jpg"/>
-  <link rel="preload" as="image" href="lion.jpg"/>
-  <link rel="stylesheet" href="styles.css?v=1785234181"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="preload" as="image" href="lion-mark.webp"/>
+  <link rel="stylesheet" href="styles.css?v=1785235170301"/>
 </head>
 <body id="top">
 
   <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
 
   <!-- SVG ICON SPRITE -->
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
@@ -66,7 +64,7 @@
 
   <!-- HEADER -->
   <header class="site" id="site-header">
-    <a href="#top" class="brand"><img src="logo.png" alt="Golden & Co."/><span>Golden &amp; Co.</span></a>
+    <a href="#top" class="brand"><img src="lion-icon.webp" alt="Golden &amp; Co."/><span>Golden &amp; Co.</span></a>
     <nav class="nav" id="nav">
       <a href="/" class="active">Home</a>
       <a href="/services">Services</a>
@@ -80,20 +78,11 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="aurora" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
-    <div class="embers" aria-hidden="true" id="embers"></div>
     <div class="hero-inner">
       <div class="hero-copy">
         <span class="eyebrow">Elevate Your Digital Presence</span>
         <h1>Your Business.<br><em>Easier.</em> Faster.<br><span class="dim">More Profitable.</span></h1>
         <p class="hero-sub">We build websites and smart automations for business owners — so you spend less time on admin, and more time doing what you love.</p>
-        <div class="hero-pills">
-          <span class="pill">Too much admin?</span>
-          <span class="pill">Chasing invoices?</span>
-          <span class="pill">Hard to get found online?</span>
-          <span class="pill">Website looks outdated?</span>
-          <span class="pill">Missing bookings?</span>
-        </div>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-gold">Get a Free Quote <svg class="ic"><use href="#ic-arrow"/></svg></a>
           <a href="#problems" class="btn btn-ghost">Learn More</a>
@@ -113,37 +102,15 @@
           </div>
         </div>
       </div>
-      <div class="hero-lion" id="hero-lion" aria-hidden="true">
-        <img src="lion.jpg" alt=""/>
+      <div class="hero-lion" id="hero-lion">
+        <img src="lion-mark.webp" alt="The Golden &amp; Co. lion emblem"/>
       </div>
     </div>
-    <a href="#services" class="scroll-cue" aria-label="Scroll down"><span class="dot"></span>Scroll</a>
   </section>
 
-  <!-- TICKER -->
-  <div class="ticker" aria-hidden="true">
-    <div class="ticker-track">
-      Save Time on Admin <span class="t-sep">✦</span>
-      Get Found on Google <span class="t-sep">✦</span>
-      Look Professional Online <span class="t-sep">✦</span>
-      Automate Your Invoices <span class="t-sep">✦</span>
-      Set Up Online Bookings <span class="t-sep">✦</span>
-      Get More Customers <span class="t-sep">✦</span>
-      Stop Chasing Payments <span class="t-sep">✦</span>
-      Work Less. Earn More. <span class="t-sep">✦</span>
-      Save Time on Admin <span class="t-sep">✦</span>
-      Get Found on Google <span class="t-sep">✦</span>
-      Look Professional Online <span class="t-sep">✦</span>
-      Automate Your Invoices <span class="t-sep">✦</span>
-      Set Up Online Bookings <span class="t-sep">✦</span>
-      Get More Customers <span class="t-sep">✦</span>
-      Stop Chasing Payments <span class="t-sep">✦</span>
-      Work Less. Earn More. <span class="t-sep">✦</span>
-    </div>
-  </div>
 
   <!-- SERVICE HIGHLIGHT -->
-  <section class="section" id="services" style="background:linear-gradient(180deg, rgba(6,11,22,0.86), rgba(6,11,22,0.93)), url('services-bg.jpg') center/cover no-repeat;">
+  <section class="section" id="services" style="center/cover no-repeat;">
     <div class="wrap">
       <div class="section-head reveal">
         <span class="eyebrow">What We Do</span>
@@ -174,7 +141,6 @@
 
   <!-- SHOWCASE -->
   <section class="showcase" id="work">
-    <div class="aurora" aria-hidden="true"><span class="blob b1"></span><span class="blob b3"></span></div>
     <div class="showcase-grid">
       <div class="reveal from-left">
         <span class="eyebrow">Our Portfolio</span>
@@ -411,7 +377,7 @@
   </section>
 
   <!-- PROCESS -->
-  <section class="section" id="process" style="background:linear-gradient(180deg, rgba(6,11,22,0.84), rgba(6,11,22,0.92)), url('process-bg.jpg') center/cover no-repeat;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <section class="section" id="process" style="center/cover no-repeat;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
     <div class="wrap">
       <div class="split-head reveal" style="margin-bottom:3.5rem;">
         <div>
@@ -446,7 +412,7 @@
   </section>
 
   <!-- WHY -->
-  <section class="section" id="about" style="background:linear-gradient(180deg, rgba(6,11,22,0.88), rgba(6,11,22,0.93)), url('about-bg.jpg') center/cover no-repeat;">
+  <section class="section" id="about" style="center/cover no-repeat;">
     <div class="wrap why-grid">
       <div class="why-visual reveal">
         <img src="why-banner.jpg" alt="Golden & Co. — Web Design, Automation, Templates" loading="lazy" decoding="async"/>
@@ -493,7 +459,7 @@
   </section>
 
   <!-- FAQ -->
-  <section class="section" id="faq" style="background:linear-gradient(180deg, rgba(10,20,36,0.9), rgba(6,11,22,0.95)), url('ambient-gold.jpg') center/cover no-repeat;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
+  <section class="section" id="faq" style="center/cover no-repeat;border-top:1px solid var(--line);border-bottom:1px solid var(--line);">
     <div class="wrap">
       <div class="section-head reveal" style="max-width:640px;margin-left:auto;margin-right:auto;text-align:center;">
         <span class="eyebrow" style="justify-content:center;">Good To Know</span>
@@ -531,7 +497,6 @@
   <!-- CTA CINEMATIC -->
   <section class="cta">
     <div class="starfield" aria-hidden="true"></div>
-    <img src="lion-cinematic.jpg" alt="" class="cta-lion" aria-hidden="true" loading="lazy" decoding="async"/>
     <div class="cta-inner reveal">
       <span class="eyebrow" style="justify-content:center;">Let's Build Something</span>
       <h2 style="margin-top:1.2rem;">Ready to Make Your Business <em>Easier?</em></h2>
@@ -541,7 +506,7 @@
   </section>
 
   <!-- CONTACT -->
-  <section class="section" id="contact" style="background:linear-gradient(180deg, rgba(6,11,22,0.86), rgba(6,11,22,0.93)), url('contact-bg.jpg') center/cover no-repeat;border-top:1px solid var(--line);">
+  <section class="section" id="contact" style="center/cover no-repeat;border-top:1px solid var(--line);">
     <div class="wrap">
       <div class="section-head reveal" style="max-width:640px;">
         <span class="eyebrow">Get in Touch</span>
@@ -626,7 +591,7 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-brand">
-      <img src="logo.png" alt="Golden & Co."/>
+      <img src="lion-icon.webp" alt="Golden &amp; Co."/>
       <span class="footer-brand-text">Golden &amp; Co.</span>
     </div>
     <div class="footer-copy">© 2026 Golden & Co. All rights reserved. | ABN 67 154 348 185</div>
@@ -705,7 +670,7 @@
   }
   </script>
 
-  <script defer src="app.js?v=1785234181"></script>
+  <script defer src="app.js?v=1785235170301"></script>
 
   <!-- Vercel Web Analytics + Speed Insights (enable both in the Vercel project dashboard) -->
   <script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
