@@ -172,3 +172,35 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
         mcta.classList.toggle('show', window.scrollY > 600 && !nearBottom);
       }, { passive: true });
     }
+
+    // ── Lion: gentle cursor parallax (composes with the CSS drift on the img) ──
+    (function () {
+      const lion = document.getElementById('hero-lion');
+      const hero = document.querySelector('.hero');
+      if (!lion || !hero || reduceMotion) return;
+      if (!window.matchMedia('(pointer:fine)').matches) return;
+
+      // release the wrapper from its entrance animation so JS can drive it
+      lion.addEventListener('animationend', (e) => {
+        if (e.animationName === 'lionEnter') lion.style.animation = 'none';
+      });
+
+      let tx = 0, ty = 0, cx = 0, cy = 0, running = false;
+      const frame = () => {
+        cx += (tx - cx) * 0.06;
+        cy += (ty - cy) * 0.06;
+        lion.style.transform = `translate3d(${cx * 30}px, ${cy * 22}px, 0) rotate(${cx * 2}deg)`;
+        if (Math.abs(tx - cx) > 0.0008 || Math.abs(ty - cy) > 0.0008) requestAnimationFrame(frame);
+        else running = false;
+      };
+      hero.addEventListener('mousemove', (e) => {
+        const r = hero.getBoundingClientRect();
+        tx = (e.clientX - r.left) / r.width - 0.5;
+        ty = (e.clientY - r.top) / r.height - 0.5;
+        if (!running) { running = true; requestAnimationFrame(frame); }
+      }, { passive: true });
+      hero.addEventListener('mouseleave', () => {
+        tx = 0; ty = 0;
+        if (!running) { running = true; requestAnimationFrame(frame); }
+      });
+    })();
