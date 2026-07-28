@@ -62,6 +62,8 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
       let tx = 0, ty = 0, cx = 0, cy = 0, running = false;
 
       const onMove = (e) => {
+        // hand control from the ambient CSS animation to the cursor
+        if (!lion.classList.contains('tilt-active')) lion.classList.add('tilt-active');
         const r = heroEl.getBoundingClientRect();
         tx = (e.clientX - r.left) / r.width - 0.5;   // -0.5 .. 0.5
         ty = (e.clientY - r.top) / r.height - 0.5;
