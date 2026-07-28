@@ -212,17 +212,17 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
       // Gold dust — sparse and slow, so it reads as atmosphere not confetti
       const dust = document.getElementById('dust');
       if (dust) {
-        const count = window.innerWidth < 760 ? 10 : 18;
+        const count = window.innerWidth < 760 ? 18 : 34;
         for (let i = 0; i < count; i++) {
           const m = document.createElement('span');
           m.className = 'mote';
-          const size = 1.5 + Math.random() * 2.5;
+          const size = 2 + Math.random() * 3.5;
           m.style.left = (Math.random() * 100) + '%';
           m.style.width = m.style.height = size.toFixed(1) + 'px';
           m.style.setProperty('--dx', (Math.random() * 90 - 45).toFixed(0) + 'px');
-          m.style.animationDuration = (16 + Math.random() * 18).toFixed(1) + 's';
+          m.style.animationDuration = (9 + Math.random() * 11).toFixed(1) + 's';
           m.style.animationDelay = (-Math.random() * 30).toFixed(1) + 's';
-          m.style.opacity = (0.35 + Math.random() * 0.45).toFixed(2);
+          m.style.opacity = (0.6 + Math.random() * 0.4).toFixed(2);
           dust.appendChild(m);
         }
       }
