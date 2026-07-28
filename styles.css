@@ -643,3 +643,45 @@ footer { display: flex; justify-content: space-between; align-items: center; fle
   .hero h1 .ln, .hero .eyebrow, .hero-sub, .hero-actions, .hero-stats { animation: none !important; opacity: 1 !important; transform: none !important; }
   [data-par] { transform: none !important; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE HEADER + DRAWER — fully opaque, never blends
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 760px) {
+  /* Header: fully solid once scrolled (no reliance on backdrop-filter,
+     which mobile browsers render inconsistently) */
+  header.site.scrolled {
+    background: #071122 !important;
+    -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+    border-bottom: 1px solid var(--line-2) !important;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.65);
+  }
+  /* Before scroll, a soft scrim keeps the logo legible over the hero */
+  header.site:not(.scrolled) { background: linear-gradient(180deg, rgba(7,17,34,0.85), rgba(7,17,34,0)); }
+
+  /* Scrim behind the drawer — dims the page so nothing reads through */
+  .nav-scrim {
+    position: fixed; inset: 0; z-index: 998;
+    background: rgba(4,9,18,0.72);
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.45s var(--ease);
+  }
+  body.menu-open .nav-scrim { opacity: 1; pointer-events: auto; }
+
+  /* Drawer: solid, full height, above the scrim */
+  .nav {
+    position: fixed; top: 0; right: 0; bottom: 0; left: auto;
+    height: 100dvh; min-height: 100vh;
+    width: min(82vw, 330px); max-width: 100vw;
+    z-index: 999;
+    background: #071122 !important;
+    -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+    border-left: 1px solid var(--line-2);
+    box-shadow: -24px 0 60px rgba(0,0,0,0.7);
+    overflow-y: auto;
+  }
+  .nav-toggle { z-index: 1002; position: relative; }
+}
+
+/* Lock the page while the drawer is open, at any width */
+body.menu-open { overflow: hidden; }

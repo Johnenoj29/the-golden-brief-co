@@ -5,19 +5,33 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
     onScroll(); window.addEventListener('scroll', onScroll, { passive: true });
 
-    // Mobile nav toggle
+    // Mobile nav toggle — with scrim + page-scroll lock so nothing shows through
     const nav = document.getElementById('nav');
     const toggle = document.getElementById('nav-toggle');
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('open');
+
+    const scrim = document.createElement('div');
+    scrim.className = 'nav-scrim';
+    document.body.appendChild(scrim);
+
+    const setMenu = (open) => {
+      nav.classList.toggle('open', open);
+      document.body.classList.toggle('menu-open', open);
       toggle.setAttribute('aria-expanded', open);
-      toggle.innerHTML = open ? '<svg class="ic"><use href="#ic-close"/></svg>' : '<svg class="ic"><use href="#ic-menu"/></svg>';
+      toggle.innerHTML = open
+        ? '<svg class="ic"><use href="#ic-close"/></svg>'
+        : '<svg class="ic"><use href="#ic-menu"/></svg>';
+    };
+
+    toggle.addEventListener('click', () => setMenu(!nav.classList.contains('open')));
+    scrim.addEventListener('click', () => setMenu(false));
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('open')) setMenu(false);
     });
-    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      nav.classList.remove('open');
-      toggle.setAttribute('aria-expanded', false);
-      toggle.innerHTML = '<svg class="ic"><use href="#ic-menu"/></svg>';
-    }));
+    // never leave the drawer stuck open when rotating back to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 760 && nav.classList.contains('open')) setMenu(false);
+    });
 
     // Scroll reveal (staggered)
     const revObserver = new IntersectionObserver((entries) => {
