@@ -49,13 +49,56 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     }, { threshold: 0.5 });
     document.querySelectorAll('.count').forEach(el => statObserver.observe(el));
 
-    // Hero lion parallax (mouse + scroll)
+    // ── 3D DEPTH HERO: perspective tilt + multi-layer parallax ──
     const lion = document.getElementById('hero-lion');
-    if (lion && !reduceMotion && window.matchMedia('(pointer:fine)').matches) {
-      window.addEventListener('mousemove', (e) => {
-        const dx = (e.clientX / window.innerWidth - 0.5) * 22;
-        const dy = (e.clientY / window.innerHeight - 0.5) * 22;
-        lion.querySelector('img').style.transform = `translate(${dx}px, ${dy}px)`;
+    const heroEl = document.querySelector('.hero');
+    const heroCopy = document.querySelector('.hero-copy');
+    const auroraEl = document.querySelector('.hero .aurora');
+    const embersEl = document.getElementById('embers');
+
+    if (lion && heroEl && !reduceMotion && window.matchMedia('(pointer:fine)').matches) {
+      lion.classList.add('tilt-3d');
+      // target vs current for smooth easing (lerp)
+      let tx = 0, ty = 0, cx = 0, cy = 0, running = false;
+
+      const onMove = (e) => {
+        const r = heroEl.getBoundingClientRect();
+        tx = (e.clientX - r.left) / r.width - 0.5;   // -0.5 .. 0.5
+        ty = (e.clientY - r.top) / r.height - 0.5;
+        if (!running) { running = true; requestAnimationFrame(frame); }
+      };
+
+      const frame = () => {
+        cx += (tx - cx) * 0.075;
+        cy += (ty - cy) * 0.075;
+
+        // Lion: real 3D rotation + counter-translation
+        const rotY = cx * 20;      // left/right turn
+        const rotX = -cy * 15;     // up/down tilt
+        lion.style.transform =
+          `rotateX(${rotX}deg) rotateY(${rotY}deg) translate3d(${cx * 26}px, ${cy * 20}px, 0)`;
+
+        // Copy block: opposite, much subtler — creates depth separation
+        if (heroCopy) heroCopy.style.transform =
+          `rotateX(${-cy * 3.2}deg) rotateY(${cx * 4}deg) translate3d(${cx * -10}px, ${cy * -7}px, 0)`;
+
+        // Background layers drift at their own depth rate
+        if (auroraEl) auroraEl.style.transform = `translate3d(${cx * -34}px, ${cy * -24}px, 0)`;
+        if (embersEl) embersEl.style.transform = `translate3d(${cx * 16}px, ${cy * 11}px, 0)`;
+
+        if (Math.abs(tx - cx) > 0.0006 || Math.abs(ty - cy) > 0.0006) requestAnimationFrame(frame);
+        else running = false;
+      };
+
+      heroEl.addEventListener('mousemove', onMove, { passive: true });
+      heroEl.addEventListener('mouseleave', () => { tx = 0; ty = 0; if (!running) { running = true; requestAnimationFrame(frame); } });
+
+      // Device tilt on phones/tablets that expose orientation
+      window.addEventListener('deviceorientation', (e) => {
+        if (e.gamma == null || e.beta == null) return;
+        tx = Math.max(-0.5, Math.min(0.5, e.gamma / 60));
+        ty = Math.max(-0.5, Math.min(0.5, (e.beta - 45) / 90));
+        if (!running) { running = true; requestAnimationFrame(frame); }
       }, { passive: true });
     }
 
@@ -122,7 +165,13 @@ const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').match
     if ((stars.length || heroLion) && !reduceMotion) {
       const parallax = () => {
         stars.forEach(s => { const r = s.parentElement.getBoundingClientRect(); s.style.transform = `translateY(${r.top * -0.12}px)`; });
-        if (heroLion && window.innerWidth > 1024) { const y = window.scrollY; heroLion.style.transform = `translateY(${y * 0.09}px) scale(${Math.max(0.9, 1 - y * 0.00006)})`; }
+        // Scroll drift applies to the inner img (z-depth preserved) so it never
+        // overwrites the 3D tilt transform living on .hero-lion itself.
+        const lionImg = heroLion && heroLion.querySelector('img');
+        if (lionImg && window.innerWidth > 1024) {
+          const y = window.scrollY;
+          lionImg.style.transform = `translate3d(0, ${y * 0.09}px, 60px) scale(${Math.max(0.9, 1 - y * 0.00006)})`;
+        }
       };
       parallax(); window.addEventListener('scroll', parallax, { passive: true });
     }

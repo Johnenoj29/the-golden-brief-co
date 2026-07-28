@@ -743,3 +743,65 @@ html { overflow-x: clip; }
     background: linear-gradient(180deg, rgba(6,11,22,0.55), transparent);
   }
 }
+
+/* ═══════════════════════════════════════════
+   3D DEPTH HERO — perspective tilt + parallax layers
+   ═══════════════════════════════════════════ */
+.hero { perspective: 1400px; perspective-origin: 60% 45%; }
+.hero-inner { transform-style: preserve-3d; }
+
+/* Lion sits in real 3D space and tilts toward the cursor */
+.hero-lion { transform-style: preserve-3d; will-change: transform; }
+.hero-lion img {
+  will-change: transform;
+  transform: translateZ(60px);
+  transition: filter .4s var(--ease);
+}
+.hero-lion.tilt-3d {
+  transition: transform .35s cubic-bezier(.2,.8,.2,1);
+}
+/* glow ring + halo sit at different depths so they separate as it moves */
+.hero-lion::before { transform: translateZ(-40px) scale(1.05); }
+.hero-lion::after  { transform: translateZ(-70px); }
+
+/* Copy lifts slightly forward for depth separation */
+.hero-copy { transform-style: preserve-3d; }
+.hero-copy > .eyebrow { transform: translateZ(28px); }
+.hero-copy > h1       { transform: translateZ(46px); }
+.hero-copy > .hero-sub{ transform: translateZ(22px); }
+.hero-copy > .hero-pills   { transform: translateZ(16px); }
+.hero-copy > .hero-actions { transform: translateZ(34px); }
+.hero-copy > .hero-stats   { transform: translateZ(10px); }
+
+/* Depth-parallax layers (embers/aurora drift at their own rate) */
+.embers { will-change: transform; }
+.aurora { will-change: transform; }
+
+/* 3D lift on cards — subtle rotation on hover */
+.glow-card, .prob-card, .work-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.highlight-grid, .problems-grid, .work-gallery { perspective: 1200px; }
+.glow-card:hover  { transform: translateY(-6px) rotateX(3deg) rotateY(-3deg) scale(1.015); }
+.prob-card:hover  { transform: translateY(-5px) rotateX(3deg) scale(1.01); }
+.work-card:hover  { transform: translateY(-6px) rotateX(2.5deg) rotateY(-2deg) scale(1.015); }
+
+/* Step dots get real dimension */
+.step-dot { transform-style: preserve-3d; transition: transform .4s var(--ease); }
+.step:hover .step-dot { transform: rotateY(180deg) scale(1.08); }
+
+/* Mobile: keep 3D subtle (touch has no cursor) and cheap to paint */
+@media (max-width: 760px) {
+  .hero { perspective: 900px; }
+  .hero-copy > .eyebrow, .hero-copy > h1, .hero-copy > .hero-sub,
+  .hero-copy > .hero-pills, .hero-copy > .hero-actions, .hero-copy > .hero-stats { transform: none; }
+  .hero-lion img { transform: none; }
+  .glow-card:hover, .prob-card:hover, .work-card:hover { transform: translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-lion, .hero-lion img, .hero-copy > *, .glow-card, .prob-card, .work-card, .step-dot {
+    transform: none !important; transition: none !important;
+  }
+}
