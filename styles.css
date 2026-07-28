@@ -699,29 +699,62 @@ body.menu-open { overflow: hidden; }
 @keyframes screenSheen { 0% { background-position: 160% 0; } 55%,100% { background-position: -80% 0; } }
 @media (prefers-reduced-motion: reduce) { .device::before { animation: none; } }
 
-/* ═══ LION AS VIDEO — screen-blended so the dark plate vanishes ═══ */
-.hero-lion { width: min(48vw, 620px); }          /* bigger than the original 540 */
-.hero-lion .lion-vid {
-  grid-area: 1/1; width: 100%; height: auto; display: block;
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 42%, rgba(0,0,0,0.85) 56%, transparent 73%);
-          mask-image: radial-gradient(circle at 50% 50%, #000 42%, rgba(0,0,0,0.85) 56%, transparent 73%);
-  animation: lionDrift 7s ease-in-out 1.8s infinite;
-  will-change: transform;
-}
-/* still image sits underneath as the fallback / first paint */
+/* ═══════════════════════════════════════════════════════════
+   THE LION — crisp vector-sharp emblem, richly animated
+   Motion comes from CSS, so it stays pin-sharp at any size/DPI
+   ═══════════════════════════════════════════════════════════ */
+.hero-lion { width: min(50vw, 640px); }
+
 .hero-lion .lion-still {
-  grid-area: 1/1; width: 100%; height: auto;
-  animation: lionDrift 7s ease-in-out 1.8s infinite;
-  opacity: 0; transition: opacity .6s var(--ease);
+  grid-area: 1/1; width: 100%; height: auto; opacity: 1;
+  filter: drop-shadow(0 34px 58px rgba(0,0,0,0.7));
+  animation: markIn 1.6s cubic-bezier(.16,1,.3,1) both,
+             lionDrift 9s ease-in-out 1.6s infinite;
+  will-change: transform;
+  transition: none;
 }
-/* if the video can't play, JS reveals the still and hides the video */
-.hero-lion.video-failed .lion-vid { display: none; }
-.hero-lion.video-failed .lion-still { opacity: 1; }
-/* the shine sweep is now baked into the video */
+
+/* Light travelling across the metal — clipped to the lion's own silhouette,
+   so it looks like a real highlight, not a band over a rectangle */
+.hero-lion .sheen {
+  grid-area: 1/1; position: relative; z-index: 3; pointer-events: none;
+  width: 100%; height: 100%;
+  background: linear-gradient(112deg,
+    transparent 34%,
+    rgba(255,246,222,0.35) 44%,
+    rgba(255,255,255,0.85) 50%,
+    rgba(255,246,222,0.35) 56%,
+    transparent 66%);
+  background-size: 320% 100%;
+  -webkit-mask-image: url("lion-mark.webp"); mask-image: url("lion-mark.webp");
+  -webkit-mask-size: 100% auto;  mask-size: 100% auto;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center top; mask-position: center top;
+  mix-blend-mode: overlay; opacity: 0;
+  animation: markIn 1.6s ease both,
+             sheenSweep 6s ease-in-out 2.4s infinite,
+             lionDrift 9s ease-in-out 1.6s infinite;
+}
+@keyframes sheenSweep {
+  0%   { opacity: 0; background-position: 150% 0; }
+  10%  { opacity: 1; }
+  42%  { opacity: 1; }
+  55%  { opacity: 0; background-position: -70% 0; }
+  100% { opacity: 0; background-position: -70% 0; }
+}
+
+/* Warm pool of light beneath, breathing */
+.hero-lion::before {
+  content: ''; grid-area: 1/1; position: absolute; z-index: -1;
+  width: 80%; height: 80%; border-radius: 50%; justify-self: center; align-self: center;
+  background: radial-gradient(circle, rgba(201,168,76,0.34), transparent 68%);
+  filter: blur(56px);
+  animation: lionGlow 9s ease-in-out 1.6s infinite;
+}
 .hero-lion::after { display: none !important; }
 
 @media (max-width: 1024px) { .hero-lion { width: min(66vw, 400px); } }
 @media (prefers-reduced-motion: reduce) {
-  .hero-lion .lion-vid { display: none; }
-  .hero-lion .lion-still { opacity: 1; animation: none; }
+  .hero-lion .lion-still, .hero-lion .sheen, .hero-lion::before { animation: none !important; }
+  .hero-lion .sheen { display: none; }
 }
