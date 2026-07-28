@@ -310,8 +310,8 @@ header.site.scrolled .brand img { height: 28px; }
 .perk p { color: var(--muted); font-size: 0.9rem; line-height: 1.8; }
 
 /* ═══ SHOWCASE / PORTFOLIO ═══ */
-.showcase { position: relative; padding: var(--sec) var(--gut); background: var(--ink-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.showcase-grid { position: relative; z-index: 2; max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(3rem, 7vw, 6rem); align-items: center; }
+.showcase { position: relative; padding: var(--sec) clamp(1.2rem, 3vw, 2.5rem); background: var(--ink-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.showcase-grid { position: relative; z-index: 2; max-width: 1320px; margin: 0 auto; display: grid; grid-template-columns: 0.62fr 1.38fr; gap: clamp(2.5rem, 5vw, 4.5rem); align-items: center; }
 .device-stage { perspective: 1600px; }
 .device-float { animation: none; }
 .device { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 0; box-shadow: 0 40px 80px -40px rgba(0,0,0,0.9); transition: transform 0.5s var(--ease); }
