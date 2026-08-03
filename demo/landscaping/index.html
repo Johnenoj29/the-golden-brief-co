@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Greenline Landscapes — Outdoor Living</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--cream:#f4f1e9;--ink:#22301f;--green:#3f6b3a;--green2:#5b8a4f;--gold:#b98a3e;--mut:#6b7566}
+body{background:var(--cream);color:var(--ink);font-family:'Inter',sans-serif;overflow-x:hidden}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.4rem 5vw}
+.logo{font-family:'Fraunces';font-weight:600;font-size:1.4rem;color:var(--green);letter-spacing:-.01em}
+.nav-links{display:flex;gap:2.2rem;font-size:.85rem;font-weight:500;color:var(--ink)}
+.nav-links a{color:var(--ink);text-decoration:none;opacity:.75}.nav-links a:hover{opacity:1}
+.cta{background:var(--green);color:#fff;padding:.75rem 1.5rem;border-radius:999px;font-weight:600;font-size:.82rem;text-decoration:none}
+.hero{display:grid;grid-template-columns:1.05fr 1fr;gap:3rem;align-items:center;padding:3rem 5vw 5rem;min-height:80vh}
+.tag{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:1.3rem}
+h1{font-family:'Fraunces';font-weight:600;font-size:clamp(2.6rem,5.5vw,4.6rem);line-height:1.05;letter-spacing:-.02em}
+h1 em{font-style:italic;color:var(--green2)}
+.sub{font-size:1.05rem;color:var(--mut);max-width:460px;line-height:1.75;margin-top:1.5rem}
+.actions{display:flex;gap:1rem;margin-top:2.2rem;flex-wrap:wrap}
+.btn{padding:1rem 2rem;border-radius:999px;font-weight:600;font-size:.9rem;text-decoration:none}
+.btn-a{background:var(--green);color:#fff}
+.btn-b{border:1px solid #cfc9b8;color:var(--ink)}
+.stats{display:flex;gap:2.5rem;margin-top:2.8rem}
+.stats div span{display:block;font-family:'Fraunces';font-weight:600;font-size:1.9rem;color:var(--green)}
+.stats div small{color:var(--mut);font-size:.75rem}
+.hero-img{height:70vh;border-radius:20px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(34,48,31,.4);position:relative}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img .chip{position:absolute;left:1.4rem;bottom:1.4rem;background:rgba(255,255,255,.92);padding:.8rem 1.2rem;border-radius:12px;font-size:.8rem;font-weight:600;color:var(--ink)}
+.hero-img .chip b{color:var(--green)}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero-img{display:none}}
+</style></head>
+<body>
+<nav class="nav"><div class="logo">Greenline Landscapes</div>
+<div class="nav-links"><a>Design</a><a>Build</a><a>Gardens</a><a>Portfolio</a><a>Contact</a></div>
+<a class="cta">Free Consult</a></nav>
+<section class="hero">
+<div>
+<div class="tag">Design · Build · Maintain</div>
+<h1>Outdoor spaces, <em>beautifully</em> transformed.</h1>
+<p class="sub">Award-winning garden design and landscaping across Melbourne. From courtyards to full backyard makeovers — designed to be lived in and loved.</p>
+<div class="actions"><a class="btn btn-a">Book a Free Consult</a><a class="btn btn-b">See Our Work</a></div>
+<div class="stats"><div><span>250+</span><small>Gardens Built</small></div><div><span>15yrs</span><small>Experience</small></div><div><span>5.0★</span><small>Rated</small></div></div>
+</div>
+<div class="hero-img"><img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1000&q=80" alt=""/><div class="chip">🌿 <b>Featured:</b> Hawthorn courtyard transformation</div></div>
+</section>
+</body></html>

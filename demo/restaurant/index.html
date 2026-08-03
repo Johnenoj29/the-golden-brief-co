@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Lumière — Fine Dining</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#12100c;--ink:#f0e9db;--gold:#cba85c;--gold2:#e4c986;--mut:#9a9082}
+body{background:var(--bg);color:var(--ink);font-family:'Montserrat',sans-serif;overflow-x:hidden}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;position:absolute;top:0;left:0;right:0;z-index:5}
+.logo{font-family:'Playfair Display';font-weight:600;font-size:1.7rem;letter-spacing:.08em}.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:2.4rem;font-size:.72rem;font-weight:400;letter-spacing:.18em;text-transform:uppercase}
+.nav-links a{color:var(--ink);text-decoration:none;opacity:.75}.nav-links a:hover{color:var(--gold)}
+.book{border:1px solid var(--gold);color:var(--gold);padding:.6rem 1.3rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none}
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 5vw}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,16,12,.7),rgba(18,16,12,.55),rgba(18,16,12,.9)),url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1400&q=80') center/cover;z-index:0}
+.hero-in{position:relative;z-index:2;max-width:760px}
+.ey{font-size:.68rem;letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:'Playfair Display';font-weight:500;font-size:clamp(3rem,8vw,6.5rem);line-height:1.05;margin:1.6rem 0}
+h1 em{font-style:italic;color:var(--gold2)}
+.sub{font-size:1rem;font-weight:300;color:#cfc7b8;max-width:520px;margin:0 auto;line-height:1.9;letter-spacing:.03em}
+.actions{margin-top:2.6rem;display:flex;gap:1.4rem;justify-content:center;flex-wrap:wrap}
+.btn{padding:1.1rem 2.6rem;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;text-decoration:none}
+.btn-a{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#12100c}
+.btn-b{border:1px solid rgba(240,233,219,.3);color:var(--ink)}
+.foot{position:absolute;bottom:2.2rem;z-index:2;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)}
+</style></head>
+<body>
+<nav class="nav"><div class="logo">Lumi<span>è</span>re</div>
+<div class="nav-links"><a>Menu</a><a>Experience</a><a>Private Dining</a><a>Cellar</a></div>
+<a class="book">Reserve</a></nav>
+<section class="hero">
+<div class="hero-in">
+<div class="ey">Modern French · Est. 2019 · Melbourne</div>
+<h1>An evening to <em>remember.</em></h1>
+<p class="sub">A seasonal degustation of modern French cuisine, paired with a curated cellar — in one of Melbourne's most intimate dining rooms.</p>
+<div class="actions"><a class="btn btn-a">Reserve a Table</a><a class="btn btn-b">View the Menu</a></div>
+</div>
+<div class="foot">✦ Two Hats · Good Food Guide 2026 ✦</div>
+</section>
+</body></html>

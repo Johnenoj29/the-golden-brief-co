@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Invoice Studio — Golden &amp; Co.</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f6f7fb;--card:#fff;--ink:#131a2b;--mut:#7b8499;--navy:#22345c;--gold:#b6893c;
+      --line:#e5e8f0;--ok:#2f9e6b;--okbg:#eaf7f1}
+body{background:radial-gradient(55% 45% at 85% 0%,#eef1fa,transparent 60%),var(--bg);
+     color:var(--ink);font-family:'Inter',sans-serif;font-weight:300;padding:2.4rem 3.6vw;min-height:100vh}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem}
+.brand{display:flex;align-items:center;gap:.75rem;font-family:'Instrument Serif',serif;font-size:1.5rem}
+.brand .m{width:38px;height:38px;border-radius:11px;background:var(--navy);color:#e8c88a;display:grid;place-items:center;font-size:.95rem}
+.chips{display:flex;gap:.6rem}
+.chip{font-size:.72rem;color:var(--mut);background:#fff;border:1px solid var(--line);padding:.55rem 1rem;border-radius:99px}
+.chip.on{color:var(--ok);background:var(--okbg);border-color:#c7e9d8}
+h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:2.7rem;letter-spacing:-.01em}
+h1 em{font-style:italic;color:var(--gold)}
+.lead{color:var(--mut);font-size:1rem;margin:.65rem 0 2.1rem;max-width:54ch;line-height:1.75}
+.grid{display:grid;grid-template-columns:1.3fr 1fr;gap:1.5rem;align-items:start}
+.doc{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:2.4rem;box-shadow:0 24px 54px -34px rgba(19,26,43,.45)}
+.dh{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:1.5rem;border-bottom:1px solid var(--line)}
+.dh h2{font-family:'Instrument Serif',serif;font-weight:400;font-size:2.1rem;color:var(--navy)}
+.dh .paid{display:inline-block;margin-top:.5rem;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ok);background:var(--okbg);border:1px solid #c7e9d8;padding:.35rem .8rem;border-radius:99px}
+.dh .no{text-align:right;font-size:.82rem;color:var(--mut);line-height:1.95}
+.dh .no b{color:var(--ink);font-weight:500}
+.parties{display:grid;grid-template-columns:1fr 1fr;gap:2rem;padding:1.5rem 0;border-bottom:1px solid var(--line)}
+.lab{font-size:.64rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:.5rem}
+.parties p{font-size:.88rem;line-height:1.85;color:var(--mut)}
+.parties p b{color:var(--ink);font-weight:500;display:block}
+table{width:100%;border-collapse:collapse;margin-top:1.3rem}
+th{text-align:left;font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);font-weight:500;padding:.7rem 0;border-bottom:1px solid var(--line)}
+th.r,td.r{text-align:right}
+td{padding:.95rem 0;font-size:.9rem;border-bottom:1px solid #f1f3f8}
+td small{display:block;color:var(--mut);font-size:.78rem;margin-top:.15rem}
+.totals{margin-top:1.3rem;margin-left:auto;width:56%}
+.tr{display:flex;justify-content:space-between;font-size:.9rem;color:var(--mut);padding:.45rem 0}
+.tr b{color:var(--ink);font-weight:500}
+.grand{display:flex;justify-content:space-between;align-items:baseline;border-top:2px solid var(--navy);margin-top:.7rem;padding-top:1rem}
+.grand span{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+.grand b{font-family:'Instrument Serif',serif;font-size:2.1rem;color:var(--navy)}
+.pay{margin-top:1.6rem;background:#f8f9fd;border:1px solid var(--line);border-radius:14px;padding:1.1rem 1.3rem;font-size:.84rem;color:var(--mut)}
+.pay b{color:var(--ink);font-weight:500}
+.side{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:2rem;box-shadow:0 24px 54px -36px rgba(19,26,43,.4);display:flex;flex-direction:column;min-height:100%}
+.sec{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:1.2rem}
+.row{display:flex;justify-content:space-between;align-items:center;padding:.85rem 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.row span{color:var(--mut)}
+.row b{font-weight:500}
+.flow{margin-top:1.5rem;background:var(--okbg);border:1px solid #c7e9d8;border-radius:16px;padding:1.2rem 1.3rem}
+.flow .sec{color:var(--ok);margin-bottom:.9rem}
+.step{display:flex;gap:.8rem;align-items:flex-start;padding:.45rem 0;font-size:.86rem}
+.step i{font-style:normal;color:var(--ok);font-weight:600}
+.step.pend i{color:#b9c2cf}
+.step small{display:block;color:var(--mut);font-size:.77rem;margin-top:.1rem}
+.send{margin-top:auto;padding-top:1.5rem}
+.send a{display:block;text-align:center;background:var(--navy);color:#fff;padding:1.1rem;border-radius:14px;
+        font-size:.88rem;font-weight:500;text-decoration:none;box-shadow:0 14px 30px -14px rgba(34,52,92,.9)}
+.send p{text-align:center;color:var(--mut);font-size:.78rem;margin-top:.8rem}
+</style></head><body>
+<div class="top">
+  <div class="brand"><span class="m">§</span>Invoice Studio</div>
+  <div class="chips"><span class="chip">Works with Xero · MYOB · QuickBooks</span><span class="chip on">● Auto-reminders on</span></div>
+</div>
+<h1>Get paid <em>without chasing.</em></h1>
+<p class="lead">Send a beautiful invoice in seconds — then let it chase itself. Polite reminders go out on schedule until you're paid, so you never have to make the awkward phone call.</p>
+<div class="grid">
+  <div class="doc">
+    <div class="dh">
+      <div><h2>Tax Invoice</h2><span class="paid">● Sent · viewed by customer</span></div>
+      <div class="no">INV-<b>0247</b><br>Issued <b>11 Jul 2026</b><br>Due <b>18 Jul 2026</b></div>
+    </div>
+    <div class="parties">
+      <div><div class="lab">From</div><p><b>All About Plumbing &amp; Drainage</b>ABN 12 345 678 901<br>Melbourne VIC</p></div>
+      <div><div class="lab">Billed to</div><p><b>Sarah &amp; Tom Mitchell</b>18 Jellicoe St<br>Epping VIC 3076</p></div>
+    </div>
+    <table>
+      <tr><th>Description</th><th class="r">Qty</th><th class="r">Rate</th><th class="r">Amount</th></tr>
+      <tr><td>Emergency callout<small>After hours · burst pipe</small></td><td class="r">1</td><td class="r">$180.00</td><td class="r">$180.00</td></tr>
+      <tr><td>Labour<small>2.5 hrs · licensed plumber</small></td><td class="r">2.5</td><td class="r">$140.00</td><td class="r">$350.00</td></tr>
+      <tr><td>Materials<small>Copper fittings, isolation valve</small></td><td class="r">1</td><td class="r">$96.00</td><td class="r">$96.00</td></tr>
+    </table>
+    <div class="totals">
+      <div class="tr"><span>Subtotal</span><b>$626.00</b></div>
+      <div class="tr"><span>GST (10%)</span><b>$62.60</b></div>
+      <div class="grand"><span>Total due</span><b>$688.60</b></div>
+    </div>
+    <div class="pay">Pay by card or bank transfer — <b>tap the button in the email</b>. Most customers pay within 48 hours.</div>
+  </div>
+  <div class="side">
+    <div class="sec">At a glance</div>
+    <div class="row"><span>Status</span><b style="color:var(--ok)">Viewed 6:05pm</b></div>
+    <div class="row"><span>Payment terms</span><b>7 days</b></div>
+    <div class="row"><span>Accepts</span><b>Card · bank transfer</b></div>
+    <div class="flow">
+      <div class="sec">Chasing it for you</div>
+      <div class="step"><i>✓</i><div>Invoice sent<small>11 Jul · 4:32pm — delivered</small></div></div>
+      <div class="step"><i>✓</i><div>Opened by customer<small>11 Jul · 6:05pm</small></div></div>
+      <div class="step pend"><i>○</i><div>Friendly reminder<small>Scheduled 16 Jul</small></div></div>
+      <div class="step pend"><i>○</i><div>Final notice<small>Scheduled 19 Jul</small></div></div>
+    </div>
+    <div class="send"><a>Send &amp; schedule reminders</a><p>Takes about 20 seconds</p></div>
+  </div>
+</div>
+</body></html>

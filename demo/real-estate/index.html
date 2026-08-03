@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Marquee Property — Premium Real Estate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f1311;--ink:#eef0ec;--sage:#c7b899;--gold:#c9a86a;--mut:#9aa09a}
+body{background:var(--bg);color:var(--ink);font-family:'Jost',sans-serif;overflow-x:hidden}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.6rem 5vw;position:absolute;top:0;left:0;right:0;z-index:5}
+.logo{font-family:'Cormorant Garamond';font-weight:600;font-size:1.6rem;letter-spacing:.18em;text-transform:uppercase}
+.nav-links{display:flex;gap:2.4rem;font-size:.72rem;font-weight:300;letter-spacing:.18em;text-transform:uppercase}.nav-links a{color:var(--ink);text-decoration:none;opacity:.75}.nav-links a:hover{color:var(--gold)}
+.appr{border:1px solid var(--gold);color:var(--gold);padding:.6rem 1.3rem;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none}
+.hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;padding:0 5vw 5rem}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,19,17,.55),rgba(15,19,17,.35),rgba(15,19,17,.92)),url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1400&q=80') center/cover;z-index:0}
+.hero-in{position:relative;z-index:2;max-width:720px}
+.ey{font-size:.68rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:'Cormorant Garamond';font-weight:500;font-size:clamp(3rem,7vw,6rem);line-height:1.02;margin:1.4rem 0}
+h1 em{font-style:italic;color:var(--sage)}
+.sub{font-size:1.05rem;font-weight:300;color:#cdd1cc;max-width:480px;line-height:1.85}
+.actions{margin-top:2.4rem;display:flex;gap:1.3rem;flex-wrap:wrap}
+.btn{padding:1.1rem 2.5rem;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;text-decoration:none}
+.btn-a{background:var(--gold);color:#0f1311}.btn-b{border:1px solid rgba(238,240,236,.35);color:var(--ink)}
+.search{position:absolute;right:5vw;top:38%;z-index:3;background:rgba(15,19,17,.75);backdrop-filter:blur(10px);border:1px solid rgba(201,168,106,.3);border-radius:14px;padding:1.6rem;width:290px}
+.search h4{font-family:'Cormorant Garamond';font-size:1.2rem;margin-bottom:1rem}
+.search .f{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.7rem .9rem;font-size:.8rem;color:var(--mut);margin-bottom:.6rem}
+.search .go{background:var(--gold);color:#0f1311;text-align:center;padding:.8rem;border-radius:8px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;margin-top:.4rem}
+@media(max-width:900px){.search{display:none}}
+</style></head><body>
+<nav class="nav"><div class="logo">Marquee</div><div class="nav-links"><a>Buy</a><a>Sell</a><a>Lease</a><a>Appraise</a><a>About</a></div><a class="appr">Free Appraisal</a></nav>
+<section class="hero">
+<div class="search"><h4>Find your address</h4><div class="f">📍 Suburb or postcode</div><div class="f">🏠 Any type · 3+ beds</div><div class="f">$ Price range</div><div class="go">Search Listings</div></div>
+<div class="hero-in">
+<div class="ey">Boutique Property · Melbourne</div>
+<h1>Exceptional homes,<br><em>exceptionally</em> sold.</h1>
+<p class="sub">A boutique agency for Melbourne's finest properties — record results, discreet service, and marketing that makes buyers fall in love.</p>
+<div class="actions"><a class="btn btn-a">Book a Free Appraisal</a><a class="btn btn-b">View Listings</a></div>
+</div>
+</section></body></html>

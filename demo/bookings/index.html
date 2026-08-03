@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>BookFlow — Online Booking</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#fbf7f2;--card:#fff;--ink:#231d1a;--mut:#8a8079;--terra:#c96f4a;--terra2:#f3e2d8;
+      --line:#eadfd5;--ok:#3f9b6d}
+body{background:radial-gradient(60% 50% at 88% 0%,#fdeee2,transparent 60%),var(--bg);
+     color:var(--ink);font-family:'DM Sans',sans-serif;font-weight:300;padding:2.4rem 3.6vw;min-height:100vh}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.2rem}
+.brand{display:flex;align-items:center;gap:.75rem;font-family:'DM Serif Display',serif;font-size:1.5rem}
+.brand .m{width:38px;height:38px;border-radius:50%;background:var(--terra);color:#fff;display:grid;place-items:center;font-size:1rem}
+.chip{font-size:.72rem;color:var(--mut);background:#fff;border:1px solid var(--line);padding:.55rem 1.05rem;border-radius:99px}
+h1{font-family:'DM Serif Display',serif;font-weight:400;font-size:2.9rem;letter-spacing:-.015em}
+h1 em{font-style:italic;color:var(--terra)}
+.lead{color:var(--mut);font-size:1rem;margin:.7rem 0 2.3rem;max-width:52ch;line-height:1.75}
+.grid{display:grid;grid-template-columns:1.45fr 1fr;gap:1.5rem;align-items:start}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:2rem;box-shadow:0 20px 44px -30px rgba(35,29,26,.3)}
+.sec{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra);font-weight:500;margin-bottom:1.3rem}
+.svc{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.15rem 1.25rem;border:1.5px solid var(--line);border-radius:16px;margin-bottom:.75rem;cursor:pointer;transition:.25s}
+.svc:hover{border-color:#dcc7b6}
+.svc.sel{border-color:var(--terra);background:#fdf5f0}
+.svc b{font-weight:500;font-size:.98rem}
+.svc small{display:block;color:var(--mut);font-size:.82rem;margin-top:.2rem}
+.svc .p{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--terra)}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:.5rem;margin:.4rem 0 1.4rem}
+.dn{text-align:center;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);padding-bottom:.3rem}
+.d{aspect-ratio:1;display:grid;place-items:center;border-radius:12px;font-size:.9rem;border:1.5px solid transparent}
+.d.off{color:#c9bdb3}
+.d.has{border-color:var(--line);cursor:pointer}
+.d.has:hover{border-color:#dcc7b6;background:#fdf7f3}
+.d.sel{background:var(--terra);color:#fff;font-weight:500;border-color:var(--terra);box-shadow:0 8px 18px -8px rgba(201,111,74,.6)}
+.slots{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem}
+.sl{text-align:center;padding:.75rem .3rem;border:1.5px solid var(--line);border-radius:12px;font-size:.86rem;color:var(--ink);cursor:pointer}
+.sl.sel{border-color:var(--terra);background:#fdf5f0;color:var(--terra);font-weight:500}
+.sl.gone{opacity:.4;text-decoration:line-through;cursor:default}
+.sum{display:flex;flex-direction:column;min-height:100%}
+.who{display:flex;align-items:center;gap:.85rem;padding:1rem;background:#fdf7f3;border-radius:14px;margin-bottom:1.2rem}
+.who .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#c96f4a,#e6a179);display:grid;place-items:center;color:#fff;font-weight:500}
+.who b{font-weight:500;font-size:.92rem;display:block}
+.who small{color:var(--mut);font-size:.78rem}
+.r{display:flex;justify-content:space-between;padding:.8rem 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.r span{color:var(--mut)}
+.r b{font-weight:500}
+.tot{display:flex;justify-content:space-between;align-items:baseline;margin-top:1rem;padding-top:1.1rem;border-top:1.5px solid var(--terra2)}
+.tot span{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.tot b{font-family:'DM Serif Display',serif;font-size:2rem;color:var(--terra)}
+.auto{margin-top:1.5rem;background:#f4faf6;border:1px solid #d9ecdf;border-radius:14px;padding:1.1rem 1.2rem}
+.auto .sec{color:var(--ok);margin-bottom:.8rem}
+.st{display:flex;gap:.7rem;align-items:flex-start;padding:.4rem 0;font-size:.85rem}
+.st i{font-style:normal;color:var(--ok);font-weight:600}
+.st small{display:block;color:var(--mut);font-size:.77rem}
+.go{margin-top:auto;padding-top:1.4rem}
+.go a{display:block;text-align:center;background:var(--terra);color:#fff;padding:1.1rem;border-radius:14px;
+      font-size:.85rem;font-weight:500;text-decoration:none;box-shadow:0 14px 28px -14px rgba(201,111,74,.8)}
+.go p{text-align:center;color:var(--mut);font-size:.78rem;margin-top:.8rem}
+</style></head><body>
+<div class="top">
+  <div class="brand"><span class="m">◷</span>BookFlow</div>
+  <div class="chip">☁ Syncs to your calendar · SMS reminders included</div>
+</div>
+<h1>Book in <em>seconds.</em></h1>
+<p class="lead">Let customers pick a time that actually suits them. Confirmations, reminders and calendar invites all send themselves — so you stop playing phone tag and stop losing time to no-shows.</p>
+<div class="grid">
+  <div class="card">
+    <div class="sec">01 — Choose a service</div>
+    <div class="svc sel"><div><b>Standard service call</b><small>Up to 1 hour on site</small></div><span class="p">$120</span></div>
+    <div class="svc"><div><b>Full inspection &amp; report</b><small>Written report within 24 hours</small></div><span class="p">$240</span></div>
+    <div class="svc"><div><b>Emergency callout</b><small>Priority — within 2 hours</small></div><span class="p">$320</span></div>
+    <div class="sec" style="margin-top:1.9rem">02 — Pick a time that suits you</div>
+    <div class="cal">
+      <div class="dn">M</div><div class="dn">T</div><div class="dn">W</div><div class="dn">T</div><div class="dn">F</div><div class="dn">S</div><div class="dn">S</div>
+      <div class="d off">30</div><div class="d has">1</div><div class="d has">2</div><div class="d has">3</div><div class="d has">4</div><div class="d off">5</div><div class="d off">6</div>
+      <div class="d has">7</div><div class="d has">8</div><div class="d has">9</div><div class="d has">10</div><div class="d has">11</div><div class="d off">12</div><div class="d off">13</div>
+      <div class="d has">14</div><div class="d sel">15</div><div class="d has">16</div><div class="d has">17</div><div class="d has">18</div><div class="d off">19</div><div class="d off">20</div>
+    </div>
+    <div class="slots">
+      <div class="sl gone">8:00</div><div class="sl sel">9:30</div><div class="sl">11:00</div><div class="sl">1:00</div>
+      <div class="sl">2:30</div><div class="sl">4:00</div><div class="sl gone">5:30</div><div class="sl">6:00</div>
+    </div>
+  </div>
+  <div class="card sum">
+    <div class="sec">Your booking</div>
+    <div class="who"><span class="av">M</span><div><b>Mitch Donnelly</b><small>Senior technician · 4.9★</small></div></div>
+    <div class="r"><span>Service</span><b>Standard service call</b></div>
+    <div class="r"><span>When</span><b>Tue 15 Jul · 9:30am</b></div>
+    <div class="r"><span>Duration</span><b>1 hour</b></div>
+    <div class="tot"><span>Total</span><b>$120</b></div>
+    <div class="auto">
+      <div class="sec">We'll handle the rest</div>
+      <div class="st"><i>✓</i><div>Confirmation email<small>Sent the moment you book</small></div></div>
+      <div class="st"><i>✓</i><div>Calendar invite<small>Added to both calendars</small></div></div>
+      <div class="st"><i>✓</i><div>Friendly SMS reminder<small>24 hours before</small></div></div>
+    </div>
+    <div class="go"><a>Confirm my booking</a><p>Free to reschedule up to 24 hours before</p></div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>AAPD — All About Plumbing &amp; Drainage</title>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--deep:#0d2b2e;--deep2:#0a2224;--foam:#f2f7f5;--brass:#c98f3c;--aqua:#5fb6a8;--mut:#93a8a5}
+body{background:var(--deep);color:var(--foam);font-family:'Inter',sans-serif;font-weight:300;overflow-x:hidden}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1.6rem 4vw;position:absolute;top:0;left:0;right:0;z-index:10}
+.logo{display:flex;align-items:baseline;gap:.5rem;font-family:'Instrument Serif',serif;font-size:1.5rem;letter-spacing:.01em}
+.logo small{font-family:'Inter';font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--aqua)}
+.links{display:flex;gap:2.3rem;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(242,247,245,.75)}
+.links a{color:inherit;text-decoration:none}
+.call{border:1px solid rgba(201,143,60,.6);color:var(--brass);padding:.65rem 1.3rem;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;text-decoration:none}
+.hero{position:relative;min-height:84vh;display:flex;align-items:center;padding:8rem 4vw 3rem;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;z-index:0;
+ background:linear-gradient(100deg,rgba(13,43,46,.97) 34%,rgba(13,43,46,.55) 64%,rgba(13,43,46,.9)),
+ url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=1600&q=80') center/cover}
+.hero-in{position:relative;z-index:2;max-width:760px}
+.ey{display:inline-flex;align-items:center;gap:.7rem;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--aqua)}
+.ey::before{content:'';width:34px;height:1px;background:var(--aqua)}
+h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:clamp(3rem,7vw,5.6rem);line-height:1.02;margin:1.4rem 0;letter-spacing:-.015em}
+h1 em{font-style:italic;color:var(--brass)}
+.sub{color:rgba(242,247,245,.8);font-size:1.05rem;line-height:1.8;max-width:46ch}
+.acts{display:flex;gap:1rem;margin-top:2.3rem;flex-wrap:wrap;align-items:center}
+.btn{padding:1.05rem 2.2rem;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;font-weight:500}
+.b1{background:var(--brass);color:#0d2b2e}.b2{border:1px solid rgba(242,247,245,.28);color:var(--foam)}
+.badges{display:flex;gap:2rem;margin-top:3.2rem;padding-top:2rem;border-top:1px solid rgba(242,247,245,.12);flex-wrap:wrap}
+.badges div b{display:block;font-family:'Instrument Serif',serif;font-size:1.9rem;color:var(--brass)}
+.badges div small{font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+/* service band */
+.band{display:grid;grid-template-columns:repeat(4,1fr);background:var(--deep2);border-top:1px solid rgba(242,247,245,.1)}
+.s{padding:2.6rem 2rem;border-right:1px solid rgba(242,247,245,.08)}
+.s:last-child{border-right:0}
+.s b{font-family:'Instrument Serif',serif;font-size:1.35rem;display:block;margin-bottom:.6rem}
+.s p{color:var(--mut);font-size:.84rem;line-height:1.75}
+.s i{display:block;font-style:normal;color:var(--aqua);font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;margin-bottom:1rem}
+</style></head><body>
+<nav class="nav"><div class="logo">AAPD <small>Plumbing &amp; Drainage</small></div>
+<div class="links"><a>Services</a><a>Emergency</a><a>Hot Water</a><a>Blocked Drains</a></div>
+<a class="call">0497 859 257</a></nav>
+<section class="hero"><div class="hero-in">
+<div class="ey">Family owned · Melbourne metro</div>
+<h1>Done properly,<br><em>the first time.</em></h1>
+<p class="sub">Two brothers, fifteen years, and a reputation built one job at a time. Blocked drains, burst pipes and hot water — priced before we start, cleaned up before we leave.</p>
+<div class="acts"><a class="btn b1">Book a Plumber</a><a class="btn b2">Emergency? Call Now</a></div>
+<div class="badges">
+<div><b>15 yrs</b><small>Family owned</small></div>
+<div><b>1 hr</b><small>Emergency response</small></div>
+<div><b>5.0★</b><small>Google rating</small></div>
+<div><b>$0</b><small>Callout on quotes</small></div>
+</div>
+</div></section>
+<div class="band">
+<div class="s"><i>01</i><b>Blocked Drains</b><p>CCTV camera inspection and high-pressure jetting — we find the cause, not just the symptom.</p></div>
+<div class="s"><i>02</i><b>Hot Water</b><p>Repairs and same-day replacement across all major brands, gas, electric and heat pump.</p></div>
+<div class="s"><i>03</i><b>Burst Pipes</b><p>Rapid leak detection and repair, with insurance-ready reporting if you need it.</p></div>
+<div class="s"><i>04</i><b>Renovations</b><p>Full bathroom and kitchen rough-in, compliance certificates included.</p></div>
+</div>
+</body></html>

@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 
 Sitemap: https://goldenandco.com.au/sitemap.xml
+
+Disallow: /demo/
